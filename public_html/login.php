@@ -1,35 +1,26 @@
 <?php
 session_start();
-include('inc/config.php');
+include("inc/connection.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    
-    // データベース接続
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-    
-    // SQL Injection対策
-    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username=?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
-    
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $hashed_password);
-        $stmt->fetch();
-        
-        if (password_verify($password, $hashed_password)) {
-            $_SESSION['user_id'] = $id;
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            echo "パスワードが間違っています。";
-        }
-    } else {
-        echo "ユーザー名が存在しません。";
-    }
-    $stmt->close();
-    $conn->close();
+$conn = DBconn();
+
+// フォームに入れられたアカウント名とパスワードを変数に入れる
+$acountname = $_POST["acountname"];
+$acountpass = $_POST["acountpass"];
+
+// query()の中のsql操作を実行。具体的にはアカウント名に合う行を探してる
+$result = $conn->query("SELECT * FROM users2 WHERE acountname='$acountname'");
+
+if($result->num_rows > 0)   // アカウント名に合う行があるかどうか？
+    $row = $result->fetch_assoc();
+    if(password_verify($pass, $row['acountpass'])) { // ハッシュ化したパスワードと入れられたパスワードが合うかどうか？
+        $_SESSION['acountname'] = $user;    // サーバ側の処理のためにセッションにユーザ名を保存
+        echo json_encode(["success" => true, "acountname"]);    // 画面に表示させるためにjsonに保存。
+    }else{
+        echo json_encode(['success' => false, 'message' => 'パスワードが間違っています。']);
+}else{
+    echo json_encode(["success" => false, "message" => "アカウント名が違います。"]);
 }
+
+$conn -> close();
 ?>
