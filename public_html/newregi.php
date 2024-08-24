@@ -10,11 +10,18 @@ $acountpass = password_hash($_POST["acountpass"], PASSWORD_DEFAULT); // パス�
 
 $sql = "INSERT INTO users2 (acountname, acountpass) VALUES ('$acountname', '$acountpass')";
 
+$sql1 = "SELECT * FROM users2 WHERE acountname='$acountname'";
+$result1 = $conn->query($sql1);
+
 // クエリ実行とともに新規登録を承認
-if($conn->query($sql) === TRUE){
+if($result1->num_rows == 0){
+    if($conn->query($sql) === TRUE){
     echo "新規登録完了";
 }else{
     echo "エラー";
+}
+}else{
+    echo "既に登録されています。";
 }
 
 $conn->close();

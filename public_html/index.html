@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー認証</title>
+    <link rel="stylesheet" href="./css/index1.css">
+</head>
+<body>
+
+<div id = "login-icon">
+    <img src = "./assets/Logo.png" class="logo">
+</div>
+
+<div id="register-container" class="container active">
+    <h2>新規登録</h2>
+    <form id="register-form">
+        <input type="text" name="acountname" placeholder="アカウント名" required>
+        <input type="password" name="acountpass" placeholder="パスワード" required>
+        <button type="submit">登録</button>
+    </form>
+    <button onclick="showLogin()">ログイン画面へ</button>
+</div>
+
+<div id="login-container" class="container">
+    <h2>ログイン</h2>
+    <form id="login-form">
+        <input type="text" name="acountname" placeholder="アカウント名" required>
+        <input type="password" name="acountpass" placeholder="パスワード" required>
+        <button type="submit">ログイン</button>
+    </form>
+    <button onclick="showRegister()">新規登録画面へ</button>
+</div>
+
+<div id="welcome-container" class="container">
+    <h2>ようこそ、<span id="acountname"></span>さん！</h2>
+    <button onclick="location.href='./game.html'">ゲームへ</button>
+    <button onclick="logout()">ログアウト</button>
+</div>
+
+<script src="./js/index1.js"></script>
+
+</body>
+</html>
