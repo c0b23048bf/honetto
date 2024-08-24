@@ -95,7 +95,7 @@ body {
 
 .icon {
     font-size: 2.0rem;
-    user-select: none;
+    cursor: pointer;
 }
 
 .posts-icon {
@@ -170,8 +170,8 @@ body {
 .textframe {
     position: fixed;
     width: 80%;
-    height: 20%;
-    top: 55%;
+    height: 160px;
+    top: 460px;
     left: 0px;
     right: 0px;
     margin: auto;
@@ -195,7 +195,7 @@ body {
     top: 0px;
     width: 100%;
     height: 100%;
-    background-color: lightgray;
+    background-color: rgba(255,255,255,.5);
     z-index: 10;
     display: none;
 }
@@ -219,11 +219,9 @@ body {
 #select1{
     top: 10%;
 }
-
 #select2{
     top: 43%;
 }
-
 #select3{
     top: 76%;
 }
@@ -233,39 +231,7 @@ body {
     color: red
 }
 
-.end-frame {
-    position: fixed;
-    width: 80%;
-    height: 80%;
-    top: 10%;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-    background-color: #fff;
-    display: flex;
-    border-radius: 20px;
-    z-index: 10;
-    display: none;
-}
 
-.end-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    color: #000;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    text-align: center;
-}
-
-.end-text a {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    text-decoration: none;
-}
 
 .show{
     display: block;
