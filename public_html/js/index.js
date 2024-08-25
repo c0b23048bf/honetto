@@ -53,7 +53,7 @@ window.addEventListener("load", function () {
             username: "おおかみ",
             handle: "@wolf",
             content: "今日はいい天気だ",
-            icon: "assets/aka_icon.png",
+            icon: "assets/wolf_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -62,7 +62,7 @@ window.addEventListener("load", function () {
             username: "しろくま",
             handle: "@polarbear",
             content: "朝の散歩が気持ちいいです",
-            icon: "assets/aka_icon.png",
+            icon: "assets/polarbear_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -71,7 +71,7 @@ window.addEventListener("load", function () {
             username: "あじさい",
             handle: "@hydrangea",
             content: "ガーデニングを楽しんでいます",
-            icon: "assets/aka_icon.png",
+            icon: "assets/hydrangea_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -80,7 +80,7 @@ window.addEventListener("load", function () {
             username: "はるひ",
             handle: "@haruki",
             content: "新しい本を読み始めました",
-            icon: "assets/aka_icon.png",
+            icon: "assets/haruki_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -89,7 +89,7 @@ window.addEventListener("load", function () {
             username: "ラムネ",
             handle: "@ramune",
             content: "夏祭りに行ってきました",
-            icon: "assets/aka_icon.png",
+            icon: "assets/ramune_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -98,7 +98,7 @@ window.addEventListener("load", function () {
             username: "はるか",
             handle: "@haruka",
             content: "今日は友達と映画を見に行きました",
-            icon: "assets/aka_icon.png",
+            icon: "assets/haruka_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -107,7 +107,7 @@ window.addEventListener("load", function () {
             username: "つくし",
             handle: "@tsukushi",
             content: "美味しい焼き鳥を食べました",
-            icon: "assets/aka_icon.png",
+            icon: "assets/tsukushi_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -116,7 +116,7 @@ window.addEventListener("load", function () {
             username: "りんご",
             handle: "@apple",
             content: "秋の味覚を堪能しています",
-            icon: "assets/aka_icon.png",
+            icon: "assets/apple_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -125,7 +125,7 @@ window.addEventListener("load", function () {
             username: "すずめ",
             handle: "@suzume",
             content: "朝の鳥の声を聴いて癒されました",
-            icon: "assets/aka_icon.png",
+            icon: "assets/suzume_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -134,7 +134,7 @@ window.addEventListener("load", function () {
             username: "ひまわり",
             handle: "@sunflower",
             content: "元気いっぱいです",
-            icon: "assets/aka_icon.png",
+            icon: "assets/sunflower_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -143,7 +143,7 @@ window.addEventListener("load", function () {
             username: "さくら",
             handle: "@sakura",
             content: "春の景色を楽しんでいます",
-            icon: "assets/aka_icon.png",
+            icon: "assets/sakura_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
@@ -681,7 +681,9 @@ window.addEventListener("load", function () {
         post_info.className = "post";
         post_info.innerHTML = `
         <div class="user-info">
-            <img src="${post.icon}" width="50" height="50" alt="${post.username}icon">
+            <div class="post-user-icon">
+                <img src="${post.icon}" alt="${post.username}icon">
+            </div>
             <span class=username>${post.username}</span>
             <span class=handle>${post.handle}</span>
         </div>
