@@ -57,3 +57,22 @@ function logout() {
         showLogin();
     });
 }
+
+function storynumtophp(num) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'nowstory.php?data=' + encodeURIComponent(num), true);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log('Response:', xhr.responseText); 
+        } else {
+            console.error('エラーが発生しました: ' + xhr.statusText);
+        }
+    };
+
+    xhr.onerror = function() {
+        console.error('リクエストエラー');
+    };
+
+    xhr.send();
+}

@@ -9,7 +9,7 @@ $acountname = $_POST["acountname"];
 $acountpass = $_POST["acountpass"];
 
 // query()の中のsql操作を実行。具体的にはアカウント名に合う行を探してる
-$stmt = $conn->prepare("SELECT * FROM users2 WHERE acountname = ?");
+$stmt = $conn->prepare("SELECT * FROM users3 WHERE acountname = ?");
 $stmt->bind_param("s", $acountname);
 $stmt->execute();
 $result = $stmt->get_result();

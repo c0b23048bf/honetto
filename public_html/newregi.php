@@ -8,9 +8,9 @@ $conn = DBconn();
 $acountname = $_POST["acountname"];
 $acountpass = password_hash($_POST["acountpass"], PASSWORD_DEFAULT); // パスワードハッシュ化
 
-$sql = "INSERT INTO users2 (acountname, acountpass) VALUES ('$acountname', '$acountpass')";
+$sql = "INSERT INTO users3 (acountname, acountpass) VALUES ('$acountname', '$acountpass')";
 
-$sql1 = "SELECT * FROM users2 WHERE acountname='$acountname'";
+$sql1 = "SELECT * FROM users3 WHERE acountname='$acountname'";
 $result1 = $conn->query($sql1);
 
 // クエリ実行とともに新規登録を承認

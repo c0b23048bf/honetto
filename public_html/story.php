@@ -7,7 +7,7 @@ $conn = DBconn();
 $story_num = 
 $story_name = 'story' + strval($story_num)
 
-$stmt = $conn->prepare("SELECT * FROM users2 WHERE acountname = ?");
+$stmt = $conn->prepare("SELECT * FROM users3 WHERE acountname = ?");
 $stmt->bind_param("s", $_SESSION['acountname']);
 $stmt->execute();
 $result = $stmt->get_result();
