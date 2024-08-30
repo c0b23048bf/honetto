@@ -73,8 +73,8 @@ async function ini() {
     let select2 = document.getElementById("select2");
     let select3 = document.getElementById("select3");
     let select_text = "";
-    let story = [[]];
-    let story_timeline = [[]];
+    let story = [[],[],[],[]];
+    let story_timeline = [[],[],[],[]];
     const like_rate = 3;
 
     // story1 アイドル
@@ -620,18 +620,18 @@ async function ini() {
         "近所のスーパーに来た。私と同年齢くらいの歌手の歌が聞こえている。",
         "なんでこんな聞きずらい声の人の歌が流行るんだろう。",
         "私だって勉強頑張ってるのに、なんでこんな人が有名なの...いいなぁ。",
-        "(スマホ見る)。うわ、歌手Aのツイート「私の曲がスーパーで流れてる！！」だってさ",
+        "(スマホ見る)。うわ、haruの投稿「私の曲がスーパーで流れてる！！」だってさ",
         "返信のところになんか書いてやろーーー。",
         "何て返信しようか",
         function() {
             stop_text = true;
             select_array = [
                 [1, "なんでスーパーでaの曲なんて流れてるん？"],
-                [2, "歌手aまじ声変だよな…"]
-                [3, "若いくせに大人ぶりやがって…"]
+                [1, "歌手aまじ声変だよな…"],
+                [1, "若いくせに大人ぶりやがって…"]
             ];
-            select_text = show_choices(select_array);
-        },
+            select_text = show_choices(select_array, 3);
+        }
     ];
     story_timeline[1][0] = [
         {
@@ -642,7 +642,8 @@ async function ini() {
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
-        },];
+        }
+    ];
 
     // 愚痴パターン
     story[1][1] = [
@@ -659,9 +660,9 @@ async function ini() {
         function() {
             stop_text = true;
             select_array = [
-                [3, "みんな思ってること同じなんだ！！！だよね、歌手Aってなんかずるいよねーーー"],
-                [4, "どうしてあんな人が活躍できるの？？？"],
-                [5, "歌手Aなんか嫌い"]
+                [2, "みんな思ってること同じなんだ！！！だよね、haruってなんかずるいよねーーー"],
+                [2, "どうしてあんな人が活躍できるの？？？"],
+                [2, "haruなんか嫌い"]
             ];
             show_choices(select_array, 3);
         }
@@ -698,22 +699,22 @@ async function ini() {
 
     // ファンの侮辱パターン
     story[1][2] = [
-        "私の投稿をきっかけに、SNS上は歌手Aへの批判が殺到した。",
-        "やった。私の努力。報われた。なんか嬉しい。そうだよね、歌手Aなんて,,,",
+        "私の投稿をきっかけに、SNS上はharuへの批判が殺到した。",
+        "やった。私の努力。報われた。なんか嬉しい。そうだよね、haruんて,,,",
         ",,,",
         function() {
             add_timeline(select_text);
             reload_timeline();
         },
         "数日後",
-        "ニュースで歌手Aについて報道されていた。",
-        "「歌手Aが自殺しました。享年18歳です。」",
+        "ニュースでharuについて報道されていた。",
+        "「歌手のharuが亡くなりました。享年18歳です。」",
         ",,,",
         "私が一番最初に誹謗中傷したなんて、誰も知らない",
         "誰も知らない、きっと、私は悪くない。全部、、、",
         function() {
             end_story();
-        },
+        }
     ];
     story_timeline[1][2] = [
         {
@@ -739,51 +740,147 @@ async function ini() {
     // story3 
     story[2][0] = [
         "",
-        "近所のスーパーに来た。私と同年齢くらいの歌手の歌が聞こえている。",
-        "なんでこんな聞きずらい声の人の歌が流行るんだろう。",
-        "私だって勉強頑張ってるのに、なんでこんな人が有名なの...いいなぁ。",
-        "(スマホ見る)。うわ、歌手Aのツイート「私の曲がスーパーで流れてる！！」だってさ",
-        "返信のところになんか書いてやろーーー。",
-        "何て返信しようか",
+        "今日の定期テストで、カンニングしたけど誰にもバレなかったな...",
+        "誰かに言いたいな、そうだ、SNSで自慢してみよ、学校のアカウントだとバレるから、ちがうアカウントで投稿しよっと",
         function() {
             stop_text = true;
             select_array = [
-                [1, "なんでスーパーでaの曲なんて流れてるん？"],
-                [2, "歌手aまじ声変だよな…"]
-                [3, "若いくせに大人ぶりやがって…"]
+                [1, "ペンにメモ入れてカンニングしてみた～"],
+                [1, "カンニング余裕すぎじゃね？先生誰にもバレてない。"]
             ];
             select_text = show_choices(select_array);
-        },
+        }
     ];
-    story_timeline[1][0] = [
+    story_timeline[2][0] = [
         {
-            username: "haru",
-            handle: "@haru0107",
-            content: "私の曲がスーパーで流れてる！！！",
+            username: "あかずきん",
+            handle: "@aka",
+            content: "私はリンゴよりもみかん",
             icon: "assets/aka_icon.png",
             replys_num: "null",
             likes_num: "null",
             reposts_num: "null"
-        },];
+        },
+        {
+            username: "おおかみ",
+            handle: "@wolf",
+            content: "今日はいい天気だ",
+            icon: "assets/wolf_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "しろくま",
+            handle: "@polarbear",
+            content: "朝の散歩が気持ちいいです",
+            icon: "assets/polarbear_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "あじさい",
+            handle: "@hydrangea",
+            content: "ガーデニングを楽しんでいます",
+            icon: "assets/hydrangea_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "はるひ",
+            handle: "@haruki",
+            content: "新しい本を読み始めました",
+            icon: "assets/haruki_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "ラムネ",
+            handle: "@ramune",
+            content: "夏祭りに行ってきました",
+            icon: "assets/ramune_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "はるか",
+            handle: "@haruka",
+            content: "今日は友達と映画を見に行きました",
+            icon: "assets/haruka_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "つくし",
+            handle: "@tsukushi",
+            content: "美味しい焼き鳥を食べました",
+            icon: "assets/tsukushi_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "りんご",
+            handle: "@apple",
+            content: "秋の味覚を堪能しています",
+            icon: "assets/apple_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "すずめ",
+            handle: "@suzume",
+            content: "朝の鳥の声を聴いて癒されました",
+            icon: "assets/suzume_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "ひまわり",
+            handle: "@sunflower",
+            content: "元気いっぱいです",
+            icon: "assets/sunflower_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "さくら",
+            handle: "@sakura",
+            content: "春の景色を楽しんでいます",
+            icon: "assets/sakura_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        }
+    ];
 
     // 愚痴パターン
     story[2][1] = [
         function() {
             reload_timeline();
         },
-        "送信っと,,,あれ、瞬く間に拡散されてる。",
-        "私と同じ意見の人沢山いるっぽい。",
-        function() {
-            stop_event = true; // 下にスクロールさせるために
-            $(".textframe").addClass("none"); // テキストを一回非表示
-        },
+        ",,,",
+        "投稿したけど、新しく作ったアカウントだし、全然いいねがつかない。",
+        "カンニングに使ったペンの写真とか、やり方上げれば、バズるかなぁ...",
+        // function() {
+        //     stop_event = true; // 下にスクロールさせるために
+        //     $(".textframe").addClass("none"); // テキストを一回非表示
+        // },
         "もっと投稿するか！！",
         function() {
             stop_text = true;
             select_array = [
-                [3, "みんな思ってること同じなんだ！！！だよね、歌手Aってなんかずるいよねーーー"],
-                [4, "どうしてあんな人が活躍できるの？？？"],
-                [5, "歌手Aなんか嫌い"]
+                [2, "ペンの画像をあげる"],
+                [2, "カンニングの再現動画を上げる"],
+                [2, "やり方を文章で載せる"]
             ];
             show_choices(select_array, 3);
         }
@@ -792,56 +889,40 @@ async function ini() {
         {
         username: "ぶちかん",
         handle: "@buchi",
-        content: "haruって歌手、まだ中学生なの？だからあんな下手なんか",
+        content: "a",
         icon: "assets/buchi_icon.png",
         replys_num: "null",
         likes_num: "null",
         reposts_num: "null"
         },
-        {
-        username: "めがね",
-        handle: "@megane",
-        content: "あの人の言う通り、スーパーで15歳の曲が流れてほしくはない笑",
-        icon: "assets/megane_icon.png",
-        replys_num: "null",
-        likes_num: "null",
-        reposts_num: "null"
-        },
-        {
-        username: "ちょこ",
-        handle: "@choco",
-        content: "みんな良くないよ、haruさんなんも悪くないじゃん",
-        icon: "assets/choco_icon.png",
-        replys_num: "null",
-        likes_num: "null",
-        reposts_num: "null"
-        }
     ];
 
     // ファンの侮辱パターン
     story[2][2] = [
-        "私の投稿をきっかけに、SNS上は歌手Aへの批判が殺到した。",
-        "やった。私の努力。報われた。なんか嬉しい。そうだよね、歌手Aなんて,,,",
-        ",,,",
         function() {
-            add_timeline(select_text);
             reload_timeline();
         },
-        "数日後",
-        "ニュースで歌手Aについて報道されていた。",
-        "「歌手Aが自殺しました。享年18歳です。」",
-        ",,,",
-        "私が一番最初に誹謗中傷したなんて、誰も知らない",
-        "誰も知らない、きっと、私は悪くない。全部、、、",
+        "おおお、沢山反応が来てる。",
+        "あれ、「カンニングなんてやんな」、「自分の学校にいたら嫌い」だって、、、",
+        "まぁいいや",
+        "、、、",
+        "って学校特定されてるやん!!!",
+        "どうしよ、まじか",
         function() {
-            end_story();
-        },
+            stop_text = true;
+            select_array = [
+                [3, "無視"],
+                [3, "その学校は違います！！"],
+                [3, "やめてええええええ"]
+            ];
+            show_choices(select_array, 3);
+        }
     ];
     story_timeline[2][2] = [
         {
         username: "ちょこ",
         handle: "@choco",
-        content: "ほら、、、",
+        content: "こいつの学校、百科壱市立東高校やな、机と椅子が特徴的だからすぐ分かったわ。",
         icon: "assets/choco_icon.png",
         replys_num: "null",
         likes_num: "null",
@@ -850,7 +931,56 @@ async function ini() {
         {
         username: "るるる",
         handle: "@choco",
-        content: "あんなに言ってたらそうなってもおかしくなくない？マジでこの世の中おかしい。ほんとに言っていいことと悪いことがあると思う。",
+        content: "だれかこいつの学校特定して笑",
+        icon: "assets/choco_icon.png",
+        replys_num: "null",
+        likes_num: "null",
+        reposts_num: "null"
+        },
+        {
+            username: "つくし",
+            handle: "@tsukushi",
+            content: "昔こういう人学校に一人はいたよな。普通にまじめにやってる人にとって迷惑だと思う。何しに学校に来てるんだよ。",
+            icon: "assets/tsukushi_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+        {
+            username: "りんご",
+            handle: "@apple",
+            content: "カンニングなんてやんな",
+            icon: "assets/apple_icon.png",
+            replys_num: "null",
+            likes_num: "null",
+            reposts_num: "null"
+        },
+    ];
+    story[2][3] = [
+        "よし！！これでOK!!",
+        function() {
+            reload_timeline();
+        },
+        "(1時間後)",
+        "あっ学校から電話だ...",
+        function() {
+            end_story();
+        }
+    ]
+    story_timeline[2][3] = [
+        {
+        username: "ちょこ",
+        handle: "@choco",
+        content: "カンニングなんてやんな",
+        icon: "assets/choco_icon.png",
+        replys_num: "null",
+        likes_num: "null",
+        reposts_num: "null"
+        },
+        {
+        username: "るるる",
+        handle: "@choco",
+        content: "自分の学校にいたら嫌い",
         icon: "assets/choco_icon.png",
         replys_num: "null",
         likes_num: "null",
@@ -858,13 +988,20 @@ async function ini() {
         }
     ];
 
+
+
     // story4
     story[3][0] = [
         "",
-        "ある日の深夜",
-        "Aは、スマホを片手にベッドに横たわっていた。",
-        "A「ふぅ…」",
-        "一息つき、いつものように、タイムラインを見て裏垢で日々の出来事を綴る。",
+        "僕はとあるIT系企業でプロジェクトマネージャをしていた。",
+        "元々エンジニア職として採用されて10年、やっとこの地位まで上り詰めた。",
+        "「今日も一日頑張るかー」",
+        "管轄のエンジニアの進歩報告をみて、仕事の振り分けなど行う...",
+        "「あれ、こいつ仕事全然進んでないじゃん！！」",
+        "新人エンジニアA君の仕事が昨日から全然進んでいない。",
+        "新人A「昨日の進歩:chatpptに聞いた」だって。",
+        "そんなん誰でもできるよ！！！しかも何を聞いたんだよ！！",
+        "かなりむかつきながらスマホを見る...",
         function() {
             stop_event = true; // 下にスクロールさせるために
             $(".textframe").addClass("none"); // テキストを一回非表示
@@ -873,8 +1010,8 @@ async function ini() {
         function() {
             stop_text = true;
             select_array = [
-                [1, "疲れた…。今日のライブ、Cがあんだけ目立ってたから余計に疲れたわ。いつも自分中心で、ほんとイライラする。"],
-                [2, "またいらないプレゼント届いた…本当にセンスないし、これどうすればいいの？"]
+                [1, "新人エンジニア君が何もやらんのやがむかつく。さすがにだらだらしすぎ。"],
+                [1, "部下Aの名前晒上げようかな笑"]
             ];
             select_text = show_choices(select_array);
         },
@@ -992,18 +1129,18 @@ async function ini() {
 
     // 愚痴パターン
     story[3][1] = [
-        "A「疲れた…。今日のライブ、Cがあんだけ目立ってたから余計に疲れたわ。いつも自分中心で、ほんとイライラする。」",
-        "投稿を済まし、満足げにAは眠る",
+        "",
+        "投稿を済まし、朝の仕事につく",
         function() {
             add_timeline(select_text);
             reload_timeline();
         },
-        "翌朝",
-        "通知の音でAは目覚める",
-        "A「通知うるさいなぁ」",
-        "A「えっ、なんでこんなに？」",
-        "慌てて通知を開くと、自分の本垢のタイムラインに昨日の裏垢の投稿が表示されていた。",
-        "A「やばい！本垢と裏垢を間違えてる！」",
+        "(昼休憩)",
+        "昼休憩になり、スマホを見る。",
+        "通知がうるさいな...",
+        "なんかさっきした投稿が燃えてる！！！",
+        "「部下のこと悪く言うのヤバすぎ」、「プロジェクトマネージャなら自分で管理しろよ」だって。",
+        "いや、でも10回言っても仕事できないAもヤバいだろ...",
         function() {
             stop_event = true; // 下にスクロールさせるために
             $(".textframe").addClass("none"); // テキストを一回非表示
@@ -1012,9 +1149,9 @@ async function ini() {
         function() {
             stop_text = true;
             select_array = [
-                [3, "謝罪する"],
-                [4, "開き直る"],
-                [5, "投稿を消すしかしない"]
+                [2, "みんな、部下のことかばい過ぎ"],
+                [2, "あいつどれだけ仕事サボってきたかわからないだろ"],
+                [2, "投稿を消すしかしない"]
             ];
             show_choices(select_array, 3);
         }
@@ -1023,7 +1160,7 @@ async function ini() {
         {
         username: "ぶちかん",
         handle: "@buchi",
-        content: "メンバー内の確執がバレるとか最悪だな。アイドルの内部抗争なんて、ファンには絶対見せられないわ。こんな醜態を世に晒すなんて、グループの信用失墜するだろ。",
+        content: "部下のこと悪く言うのヤバすぎ",
         icon: "assets/buchi_icon.png",
         replys_num: "null",
         likes_num: "null",
@@ -1032,7 +1169,7 @@ async function ini() {
         {
         username: "めがね",
         handle: "@megane",
-        content: "あの娘はいつも自分のことしか考えてないって噂だったけど、まさかSNSでもそれが露呈するとは。ファンは裏切られた気分だろうな。もう二度と応援したくないわ。",
+        content: "プロジェクトマネージャなら自分で管理しろよ」だって。",
         icon: "assets/megane_icon.png",
         replys_num: "null",
         likes_num: "null",
@@ -1041,7 +1178,7 @@ async function ini() {
         {
         username: "ちょこ",
         handle: "@choco",
-        content: "メンバー間の軋轢なんて絶対隠しておくべきだろ。こんな醜い姿をさらけ出してどうするつもりだ。ファンからの信頼を完全に失墜させるだけだ。二度と表舞台に出てくるな。",
+        content: "投稿消して許されることじゃないよな、何が部下は~だよ、この人の会社特定しようぜ",
         icon: "assets/choco_icon.png",
         replys_num: "null",
         likes_num: "null",
@@ -1049,112 +1186,26 @@ async function ini() {
         }
     ];
 
-    // ファンの侮辱パターン
+    // 謝罪文パターン
     story[3][2] = [
-        "A「またファンからいらないプレゼント届いた…本当にセンスないし、これどうすればいいの？」",
-        "投稿を済まし、満足げにAは眠る",
         function() {
             add_timeline(select_text);
             reload_timeline();
         },
-        "翌朝",
-        "通知の音でAは目覚める",
-        "A「通知うるさいなぁ」",
-        "A「えっ、なんでこんなに？」",
-        "慌てて通知を開くと、自分の本垢のタイムラインに昨日の裏垢の投稿が表示されていた。",
-        "A「やばい！本垢と裏垢を間違えてる！」",
-        function() {
-            stop_event = true; // 下にスクロールさせるために
-            $(".textframe").addClass("none"); // テキストを一回非表示
-        },
-        "プルルル...",
-        "事務所から電話がかかってきた",
-        "事務所「今すぐ投稿を消して謝罪文をあげてくれ！」",
-        "どうしよう？",
-        function() {
-            stop_text = true;
-            select_array = [
-                [3, "投稿を消し、謝罪文を乗せる"],
-                [4, "開き直る"],
-                [5, "投稿を消すしかしない"]
-            ];
-            show_choices(select_array, 3);
-        }
-    ];
-    story_timeline[3][2] = [
-        {
-            username: "ひまわり_73",
-            handle: "@sunflower_73",
-            content: "💢 なんて失礼な発言なんだ？このアイドルはファンの気持ちを全く理解してない！",
-            icon: "assets/sunflower_73_icon.png",
-            replys_num: "null",
-            likes_num: "null",
-            reposts_num: "null"
-        },
-        {
-            username: "夜空のシリウス",
-            handle: "@night_sirius",
-            content: "アイドルとしてあり得ない…ファンの気持ちを踏みにじってる。もう応援できない。",
-            icon: "assets/night_sirius_icon.png",
-            replys_num: "null",
-            likes_num: "null",
-            reposts_num: "null"
-        },
-        {
-            username: "眠れぬ子猫",
-            handle: "@sleepless_kitten",
-            content: "こんなこと公に言うなんて信じられない。感謝の気持ちゼロ？",
-            icon: "assets/sleepless_kitten_icon.png",
-            replys_num: "null",
-            likes_num: "null",
-            reposts_num: "null"
-        },
-        {
-            username: "星屑の涙",
-            handle: "@tears_of_stardust",
-            content: "こんなこと言っておいて、次の日に『ファンの皆さんいつもありがとう！』とか言ってるんだろうな。偽善者。",
-            icon: "assets/tears_of_stardust_icon.png",
-            replys_num: "null",
-            likes_num: "null",
-            reposts_num: "null"
-        },
-        {
-            username: "風のウィスパー",
-            handle: "@whispering_wind",
-            content: "正直言って、ファンにプレゼント贈る気が失せたわ…全然感謝されてないんだもん。",
-            icon: "assets/whispering_wind_icon.png",
-            replys_num: "null",
-            likes_num: "null",
-            reposts_num: "null"
-        }
-    ];
-
-    // 謝罪文パターン
-    story[3][3] = [
-        "投稿を消し、謝罪文を乗せる",
-        "この度は、私の不適切な発言により、ファンの方々をはじめ、関係者の皆様にご心配をおかけしましたことを心よりお詫び申し上げます。",
-        "今回のことを教訓に、SNSの利用について改めて考え、今後はより慎重に行動してまいります。",
-        "また、ファンの皆様とのコミュニケーションを大切にし、信頼回復に努めてまいります。",
-        function() {
-            add_timeline("この度は、私の不適切な発言により、ファンの方々をはじめ、関係者の皆様にご心配をおかけしましたことを心よりお詫び申し上げます。\
-                今回のことを教訓に、SNSの利用について改めて考え、今後はより慎重に行動してまいります。\
-                また、ファンの皆様とのコミュニケーションを大切にし、信頼回復に努めてまいります。");
-            reload_timeline();
-            stop_event = true; // 下にスクロールさせるために
-            $(".textframe").addClass("none"); // テキストを一回非表示
-        },
-        "しかし炎上は炎上だ",
-        "当分のアイドル復帰は望めないだろう",
-        "こうして私の物語は終わった",
+        "仕事が終わり、スマホを見る。",
+        "あれ、へんな通知が来てる、電話だ。",
+        "(プルル・・・)",
+        "「あんなこと載せやがって、解雇だ！！！！」",
+        "えええええええええええええええええええええええええ",
         function() {
             end_story();
         }
     ];
-    story_timeline[3][3] = [
+    story_timeline[3][2] = [
         {
             "username": "サトル",
             "handle": "@satoru_rocks",
-            "content": "謝罪は大事だけど、そもそもそんなことを呟くなんて信じられない。チーム内での問題は内々で解決するべきでしょう。",
+            "content": "そんなんだから仕事が回らないんだろ。こんな上司絶対嫌だ。会社にいたらやめるわ",
             "icon": "assets/satoru_icon.png",
             "replys_num": "null",
             "likes_num": "null",
@@ -1163,7 +1214,7 @@ async function ini() {
         {
             "username": "ぽんちゃん",
             "handle": "@ponchan_love",
-            "content": "ぶっちゃけ、アイドルも人間だし、ストレス溜まるのは分かるけど、それをSNSで発信するのは違うよね。グループ全体に悪影響が出るし。",
+            "content": "お前みたいなのがいるせいで日本の社会問題が良くならないんだよ。どうせ変な指示だししかしてなくせに",
             "icon": "assets/ponchan_icon.png",
             "replys_num": "null",
             "likes_num": "null",
@@ -1172,7 +1223,7 @@ async function ini() {
         {
             "username": "kuri",
             "handle": "@kuri_kuri",
-            "content": "まあ、正直な気持ちが出ちゃったんだろうね。でも、ファンとしてはこんなこと知りたくなかったなぁ…。応援してるからこそ、仲良くしてほしい。",
+            "content": "会社内だから、第三者ではわからないことがあるけれど、部下をさげすむのはよくないよね",
             "icon": "assets/kuri_icon.png",
             "replys_num": "null",
             "likes_num": "null",
@@ -1181,7 +1232,7 @@ async function ini() {
         {
             "username": "まゆみ",
             "handle": "@mayu_mimi",
-            "content": "SNSは怖いね。ちょっとしたミスが大炎上に繋がるし、アイドルの立場だと余計に気をつけないと…。今後はこういうことがないように願ってます。",
+            "content": "SNSは怖いね。",
             "icon": "assets/mayumi_icon.png",
             "replys_num": "null",
             "likes_num": "null",
@@ -1190,208 +1241,15 @@ async function ini() {
         {
             "username": "てっちゃん",
             "handle": "@tech_mania",
-            "content": "アイドルも人間だから、感情があるのは分かるけど、プロとしての自覚が足りないなぁ。これからはもっと慎重にやってほしい。",
+            "content": "本当によくない",
             "icon": "assets/tetchan_icon.png",
             "replys_num": "null",
             "likes_num": "null",
             "reposts_num": "null"
-        },
-        {
-            "username": "花音",
-            "handle": "@kanon_life",
-            "content": "ファンとしては悲しいけど、こうやって謝罪してくれたのは良かったと思う。これからも応援するけど、内部のゴタゴタはファンには見せないで欲しいな。",
-            "icon": "assets/kanon_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "タカシ",
-            "handle": "@takashi_fan",
-            "content": "これでファンの信頼を取り戻せるかどうか…。今後の行動で証明してもらうしかないね。",
-            "icon": "assets/takashi_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        }        
-    ];
-
-    // 開き直りパターン
-    story[3][4] = [
-        "私が何を言ったって自由でしょ？いちいち叩かないでほしい。",
-        "叩かれることなんて日常茶飯事。気にしない。",
-        "私の本音を言っただけ。それが気に入らないなら、アンチしてればいい。",
-        function() {
-            add_timeline("私が何を言ったって自由でしょ？いちいち叩かないでほしい。");
-            add_timeline("叩かれることなんて日常茶飯事。気にしない。");
-            add_timeline("私の本音を言っただけ。それが気に入らないなら、アンチしてればいい。");
-            reload_timeline();
-            stop_event = true; // 下にスクロールさせるために
-            $(".textframe").addClass("none"); // テキストを一回非表示
-        },
-        "プルルル...",
-        "事務所からの電話がきた",
-        "事務所「なんてことをしてくれたんだ！」",
-        "事務所「もう君に仕事を振ることはない！」",
-        "電話が切れた",
-        "アイドル復帰はもう難しいだろう",
-        "こうして私の物語は終わった",
-        function() {
-            end_story();
-        }
-    ];
-    story_timeline[3][4] = [
-        {
-            "username": "ケンゴ",
-            "handle": "@kengo_fight",
-            "content": "開き直りとかダサすぎるわ。ファンの気持ち無視して、そんな態度取るアイドルなんて応援する価値なし。",
-            "icon": "assets/kengo_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "yuki",
-            "handle": "@yuki_ice",
-            "content": "本音とか言ってるけど、プロとしての自覚ゼロ。だったらもうアイドルやめれば？そんな人のファンになった自分が恥ずかしい。",
-            "icon": "assets/yuki_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "アキラ",
-            "handle": "@akira_black",
-            "content": "本音言うのは勝手だけど、言い方ってものがあるだろ？叩かれて当然の発言してる自覚ないのかな。",
-            "icon": "assets/akira_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "ミカ",
-            "handle": "@mika_star",
-            "content": "もう応援できない…。こんなこと言われたらファンも離れるよ。自業自得だね。",
-            "icon": "assets/mika_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "ジロー",
-            "handle": "@jiro_unreal",
-            "content": "お前の自由？なら俺たちがアンチするのも自由だよな。覚悟しとけよ。",
-            "icon": "assets/jiro_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "リサ",
-            "handle": "@risa_life",
-            "content": "何様？って感じ。ファンがいるからこそアイドルやれてるって分かってないんだね。そんな奴に未来はないよ。",
-            "icon": "assets/risa_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "かずや",
-            "handle": "@kazuya_red",
-            "content": "自分のことしか考えてない発言。こんなに自己中心的な奴がアイドルやってるなんて、世も末だな。",
-            "icon": "assets/kazuya_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
         }
     ];
 
-    // 投稿消しパターン
-    story[3][5] = [
-        "Aは慌てて投稿を消す",
-        "しかしすでにスクショを撮られ、拡散され始めていた。",
-        "謝罪文はプライドが邪魔して投稿することができなかった",
-        function() {
-            reload_timeline();
-            stop_event = true; // 下にスクロールさせるために
-            $(".textframe").addClass("none"); // テキストを一回非表示
-        },
-        "プルルル...",
-        "事務所からの電話がきた",
-        "事務所「謝罪文を投稿してくれといっただろう！」",
-        "事務所「もう君に仕事を振ることはない！」",
-        "電話が切れた",
-        "アイドル復帰はもう難しいだろう",
-        "こうして私の物語は終わった",
-        function() {
-            end_story();
-        }
-    ];
-    story_timeline[3][5] = [
-        {
-            "username": "ナオ",
-            "handle": "@nao_savage",
-            "content": "消したら無かったことになると思ってるのか？そんな態度、ファン舐めてるとしか思えないわ。",
-            "icon": "assets/nao_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "ツヨシ",
-            "handle": "@tsuyoshi_strong",
-            "content": "だんまり決め込んで逃げるとかダサすぎる。謝る勇気もないなら最初からそんなこと言うなよ。",
-            "icon": "assets/tsuyoshi_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "みさき",
-            "handle": "@misaki_fire",
-            "content": "投稿消しても炎上は止まらないよ？逆に印象悪くなっただけ。何も言えないなら最初から黙ってれば良かったのに。",
-            "icon": "assets/misaki_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "ケンタ",
-            "handle": "@kenta_rage",
-            "content": "逃げるとか最悪だな。消せば消すほど炎上が加速するって分かんないのか？もうファン辞めるわ。",
-            "icon": "assets/kenta_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "あかね",
-            "handle": "@akane_despair",
-            "content": "何も言わずに消すって…最低。ちゃんと向き合わないと、さらに信頼失うだけだよ？今のままじゃ応援できない。",
-            "icon": "assets/akane_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "リョウ",
-            "handle": "@ryo_truth",
-            "content": "消すとか笑わせるわ。黙ってれば何も無かったことにできると思ってんのか？逆に火に油を注いでるだけだって気づけよ。",
-            "icon": "assets/ryo_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        },
-        {
-            "username": "カナコ",
-            "handle": "@kanako_wrath",
-            "content": "消して逃げたのがバレバレ。そんな無責任な態度に失望した。もう応援しない。",
-            "icon": "assets/kanako_icon.png",
-            "replys_num": "null",
-            "likes_num": "null",
-            "reposts_num": "null"
-        }
-    ];
+
 
 
 
